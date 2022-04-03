@@ -1,0 +1,108 @@
+### GET ALL PROFILES
+
+GET http://{{host}}:{{port}}/{{baseUrl}}/profiles
+Accept: appicaltion/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+    %}
+
+### GET ONE PROFILE
+//put id
+GET http://{{host}}:{{port}}/{{baseUrl}}/profiles/:id
+Accept: appicaltion/json
+
+> {%
+client.test("Request executed successfully, function(){
+client.assert(response.status ===200, "Response status is not 200")
+})
+%}
+
+### CREATE ONE PROFILE
+
+POST http://{{host}}:{{port}}/{{baseUrl}}/profiles
+Content-Type: application/json
+
+{
+  "username": "Hubert Bonisseur de la Bath"
+}
+
+> {%
+client.test("Request executed successfully, function(){
+client.assert(response.status ===204, "Response status is not 200")
+})
+%}
+
+
+### GET ALL ROOMS
+
+GET http://{{host}}:{{port}}/{{baseUrl}}/rooms
+Accept: appicaltion/json
+
+> {%
+    client.test("Request executed successfully", function() {
+        client.assert(response.status === 200, "Response status is not 200");
+    });
+    %}
+
+### GET ONE ROOM
+//put id
+GET http://{{host}}:{{port}}/{{baseUrl}}/rooms/6249b3e8eaa62d34a861dcaa
+Accept: appicaltion/json
+
+> {%
+client.test("Request executed successfully, function(){
+client.assert(response.status ===200, "Response status is not 200")
+})
+%}
+
+### CREATE ONE ROOM
+
+POST http://{{host}}:{{port}}/{{baseUrl}}/rooms
+Content-Type: application/json
+
+{
+  "name": "blop",
+  "profileIds": ["6249b18b74c436cbf39a8c86", "624a0e515d889dca94d5d46d"]
+}
+
+> {%
+client.test("Request executed successfully, function(){
+client.assert(response.status ===204, "Response status is not 200")
+})
+%}
+
+### CREATE ONE MESSAGE
+
+POST http://{{host}}:{{port}}/{{baseUrl}}/messages
+Content-Type: application/json
+
+{
+  "content": "Ma blanquette est bonne"
+}
+
+> {%
+client.test("Request executed successfully, function(){
+client.assert(response.status ===204, "Response status is not 200")
+})
+%}
+
+
+### LINK MESSAGE TO USER AND ROOM
+
+POST http://{{host}}:{{port}}/{{baseUrl}}/messages/profileAndRoom
+Content-Type: application/json
+
+{
+  "messageId": "624a0f875d889dca94d5d47b",
+  "roomId": "6249b3e8eaa62d34a861dcaa",
+  "profileId": "624a0e515d889dca94d5d46d"
+}
+
+> {%
+client.test("Request executed successfully, function(){
+client.assert(response.status ===204, "Response status is not 200")
+})
+%}

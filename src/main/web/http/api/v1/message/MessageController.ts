@@ -33,7 +33,6 @@ export class MessageController {
   }
 
   async create(req: CreateMessageRequest, res: Response) {
-    console.log(req.body)
     const message = await this.messageService.create({
       message: CreateMessageRequestPayload.toMessage(req.body)
     })
