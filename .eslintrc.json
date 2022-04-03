@@ -1,0 +1,76 @@
+{
+  "extends": [
+    "eslint:recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript"
+  ],
+  "globals": {
+    "chrome": true
+  },
+  "ignorePatterns": [
+    "*.d.ts"
+  ],
+  "parser": "@typescript-eslint/parser",
+  "parserOptions": {
+    "ecmaVersion": 2019,
+    "sourceType": "module",
+    "ecmaFeatures": {
+      "jsx": true
+    }
+  },
+  "plugins": [
+    "prettier",
+    "@typescript-eslint",
+    "unused-imports"
+  ],
+  "root": true,
+  "rules": {
+    "prettier/prettier": "error",
+    "object-curly-spacing": [
+      "error",
+      "always"
+    ],
+    "unused-imports/no-unused-imports-ts": "error",
+    "no-magic-numbers": [
+      "error",
+      {
+        "ignore": [
+          0,
+          1,
+          200,
+          1000
+        ]
+      }
+    ],
+    "max-params": [
+      "warn",
+      4
+    ],
+    "@typescript-eslint/no-non-null-assertion": "error",
+    "no-unreachable": "error",
+    "import/no-namespace": "error",
+    "import/order": [
+      "error",
+      {
+        "newlines-between": "never",
+        "groups": [
+          "index",
+          "sibling",
+          "parent",
+          "internal",
+          "external",
+          "builtin",
+          "object"
+        ],
+        "alphabetize": {
+          "order": "asc",
+          "caseInsensitive": true
+        }
+      }
+    ],
+    "consistent-return": "error"
+  }
+}
