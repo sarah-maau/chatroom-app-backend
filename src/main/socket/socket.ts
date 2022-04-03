@@ -31,7 +31,6 @@ function socket({ io }: { io: Server }) {
 
     socket.on(ClientEvent.SEND_ROOM_MESSAGE, ({ roomId, message, username }) => {
       const date = new Date()
-
       socket.to(roomId).emit(ServerEvent.ROOM_MESSAGE, {
         message,
         username,

@@ -1,26 +1,17 @@
-import log from './helpers/logs/Logging'
-import socket from './socket/socket'
-import { APPLICATION_CONSTANTS } from '../config/Constants'
-import express from 'express'
-import { Server } from 'socket.io'
-import { createServer } from 'http'
+// eslint-disable-next-line import/no-unresolved
+import { BackendApplicationParams } from './config/BackEndApplicationParams'
+// eslint-disable-next-line import/namespace
+import { BackendApplication } from './main'
+import { config } from 'dotenv'
 
-const start = express()
-
-const httpServer = createServer(start)
-
-const io = new Server(httpServer, {
-  cors: {
-    origin: APPLICATION_CONSTANTS.CORS_ORIGIN,
-    credentials: true
-  }
-})
-
-start.get('/', (_, res) => res.send(`Server is up and running 🎉🕺`))
-
-httpServer.listen(APPLICATION_CONSTANTS.PORT, APPLICATION_CONSTANTS.HOST, () => {
-  log.info(`🚀 Server is listening at port ${APPLICATION_CONSTANTS.PORT} 🚀`)
-  log.info(`http://${APPLICATION_CONSTANTS.HOST}:${APPLICATION_CONSTANTS.PORT}`)
-
-  socket({ io })
-})
+config()
+const app = new BackendApplication()
+app.init(new BackendApplicationParams({})).then(() =>
+  app.start().then(() => {
+    // eslint-disable-next-line no-process-env
+    if (process.env.NODE_ENV === 'production') {
+      // this has to be a warn level to avoid breaking log redirections like azure appinsight
+      console.warn('backend started')
+    }
+  })
+)
