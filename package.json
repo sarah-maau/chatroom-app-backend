@@ -14,7 +14,9 @@
     "start:dev": "ts-node src/main/start.ts",
     "start:prod": "node dist/start.js",
     "test": "jest --no-cache --forceExit --coverage --testResultsProcessor=jest-sonar-reporter",
-    "start": "npm run clean && npm run compile && npm run start:local && npm run start:prod"
+    "start": "npm run clean && npm run compile && npm run start:local && npm run start:prod",
+    "tsc": "tsc",
+    "postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
