@@ -6,17 +6,19 @@
   "license": "UNLICENSED",
   "scripts": {
     "build": "npm run clean && npm run compile",
+    "checkdeps": "ncu",
+    "checkdeps:apply": "ncu -u",
     "clean": "rimraf dist && rimraf tsconfig.tsbuildinfo",
     "compile": "tsc --build",
     "format": "prettier --config .prettierrc.json --write src/**/*.ts",
+    "formatconfig": "prettier-package-json --write package.json .eslintrc.json .ncurc.json .prettierrc.json",
+    "preinstall": "node -e \"if(process.env.npm_execpath.indexOf('npm') === -1) throw new Error('You must use npm to install')\"",
     "lint": "eslint --max-warnings 30 --ext .ts src/**",
+    "sonar": "node sonarqube.analysis.js",
+    "sonar:withtests": "npm run test && node sonarqube.analysis.js",
     "start:local": "NODE_ENV=local ts-node src/main/start.ts",
-    "start:dev": "ts-node src/main/start.ts",
-    "start:prod": "node dist/start.js",
-    "test": "jest --no-cache --forceExit --coverage --testResultsProcessor=jest-sonar-reporter",
-    "start": "npm run clean && npm run compile && npm run start:local && npm run start:prod",
-    "tsc": "tsc",
-    "postinstall": "tsc && mv -i -v public dist/ && rm -v -rf src"
+    "start:prod": "node dist/main/start.js",
+    "test": "jest --no-cache --forceExit --coverage --testResultsProcessor=jest-sonar-reporter"
   },
   "devDependencies": {
     "@tsconfig/node16": "^1.0.2",
