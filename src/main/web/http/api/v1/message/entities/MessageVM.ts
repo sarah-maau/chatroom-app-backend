@@ -1,6 +1,5 @@
 import { Message } from '../../../../../../domain/models/message/Message'
 import { ProfileVM } from '../../profile/entities/ProfileVM'
-import S, { ObjectSchema } from 'fluent-json-schema'
 
 export class MessageVM {
   id: string
@@ -22,17 +21,5 @@ export class MessageVM {
       profile: p.profile,
       createdDate: p.message.createdDate
     })
-  }
-
-  static getFluentSchema(): ObjectSchema {
-    return S.object()
-      .prop('id', S.string().required())
-      .prop('content', S.string().required())
-      .prop('profile', ProfileVM.getFluentSchema().required())
-      .prop('createdDate', S.string().format(S.FORMATS.DATE_TIME).required())
-  }
-
-  static getValidationSchema(): Record<string, unknown> {
-    return { ...this.getFluentSchema(), description: MessageVM.name }
   }
 }

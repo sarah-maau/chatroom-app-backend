@@ -42,8 +42,14 @@ export class MessageController {
   async linkMessageProfileAndRoom(req: LinkMessageProfileRoomRequest, res: Response) {
     const { messageId, roomId, profileId } = req.body
     const message = await this.messageService.findOneById(messageId)
+    if (!message) return res.status(constants.HTTP_STATUS_NOT_FOUND)
+
     const room = await this.roomService.findOneById(roomId)
+    if (!message) return res.status(constants.HTTP_STATUS_NOT_FOUND)
+
     const profile = await this.profileService.findOneById(profileId)
+    if (!message) return res.status(constants.HTTP_STATUS_NOT_FOUND)
+
     const relation = await this.messageService.linkMessageToProfileAndRoom({
       message: message,
       room: room,

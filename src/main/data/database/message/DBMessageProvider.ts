@@ -17,7 +17,7 @@ export class DBMessageProvider implements IMessageProvider {
     return {
       id: message.id,
       content: message.content,
-      createdDate: message.createdDate,
+      createdDate: message.createdDate
     } as MessageDocument
   }
 

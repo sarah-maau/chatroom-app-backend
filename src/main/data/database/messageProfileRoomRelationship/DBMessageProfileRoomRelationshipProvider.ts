@@ -55,7 +55,7 @@ export class DBMessageProfileRoomRelationshipProvider implements IMessageProfile
       roomId: id
     }).exec()
     return MessageProfileRelationships.map((MessageProfileRelationship) =>
-        DBMessageProfileRoomRelationshipProvider.toMessageProfileRoomRelationship(MessageProfileRelationship)
+      DBMessageProfileRoomRelationshipProvider.toMessageProfileRoomRelationship(MessageProfileRelationship)
     )
   }
 

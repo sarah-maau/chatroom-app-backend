@@ -35,7 +35,6 @@ export class DBProfileProvider implements IProfileProvider {
     return DBProfileProvider.toProfile(profile)
   }
 
-
   async findAll(): Promise<Profile[]> {
     const results = await DBProfileModel.find().exec()
     return results.map((c) => DBProfileProvider.toProfile(c))
@@ -47,5 +46,4 @@ export class DBProfileProvider implements IProfileProvider {
     }).exec()
     return results.map((entity) => DBProfileProvider.toProfile(entity))
   }
-
 }

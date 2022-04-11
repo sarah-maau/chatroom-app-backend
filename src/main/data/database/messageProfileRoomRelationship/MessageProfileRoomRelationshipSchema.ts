@@ -11,7 +11,7 @@ export interface MessageProfileRoomRelationshipDocument extends Document {
 }
 
 export const MessageProfileRoomRelationshipSchema = new Schema<
-    MessageProfileRoomRelationshipDocument,
+  MessageProfileRoomRelationshipDocument,
   DBMessageProfileRoomRelationshipModelType<MessageProfileRoomRelationshipDocument>
 >({
   messageId: { type: String, required: true },

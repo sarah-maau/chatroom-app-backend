@@ -30,6 +30,7 @@ export class ProfileController {
 
   async getOne(req: Request, res: Response) {
     const profile = await this.profileService.findOneById(req.params.id)
+    if (!profile) res.status(constants.HTTP_STATUS_NOT_FOUND)
     return res.status(constants.HTTP_STATUS_OK).json(ProfileVM.from(profile))
   }
 

@@ -1,7 +1,6 @@
 import { MessageVM } from '../../message/entities/MessageVM'
 import { Room } from '../../../../../../domain/models/room/Room'
 import { ProfileVM } from '../../profile/entities/ProfileVM'
-import S, { ObjectSchema } from 'fluent-json-schema'
 
 export class RoomVM {
   id: string
@@ -26,18 +25,5 @@ export class RoomVM {
       profiles: p.profiles,
       messages: p.messages
     })
-  }
-
-  static getFluentSchema(): ObjectSchema {
-    return S.object()
-      .prop('id', S.string().required())
-      .prop('name', S.string().required())
-      .prop('numOfProfile', S.number().required())
-      .prop('profiles', S.array().items(ProfileVM.getFluentSchema()))
-      .prop('messages', S.array().items(MessageVM.getFluentSchema()))
-  }
-
-  static getValidationSchema(): Record<string, unknown> {
-    return { ...this.getFluentSchema(), description: ProfileVM.name }
   }
 }

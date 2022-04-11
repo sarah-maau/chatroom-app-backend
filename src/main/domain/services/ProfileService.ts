@@ -12,7 +12,7 @@ export class ProfileService {
 
   async create(p: { profile: Profile }): Promise<Profile> {
     const profile = await this.profileProvider.create(new Profile({ username: p.profile.username }))
-    this.logger.info(`create > Profile[${profile.id}]`)
+    this.logger.info(`create > Profile[${profile.id}] 🎉`)
     return profile
   }
 

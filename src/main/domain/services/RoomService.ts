@@ -12,7 +12,7 @@ export class RoomService {
 
   async create(p: { room: Room }): Promise<Room> {
     const room = await this.roomProvider.create(p.room)
-    this.logger.info(`create > Room[${room.id}]`)
+    this.logger.info(`create > Room[${room.id}] 🎉`)
     return room
   }
 

@@ -6,8 +6,10 @@ import { IMessageProfileRoomRelationshipProvider } from '../providers/IMessagePr
 import { IMessageProvider } from '../providers/IMessageProvider'
 import { IProfileProvider } from '../providers/IProfileProvider'
 import { IRoomProvider } from '../providers/IRoomProvider'
+import { logger } from '../helpers/logs/Logging'
 
 export class MessageService {
+  private readonly logger = logger(this.constructor.name)
   private profileProvider: IProfileProvider
   private messageProvider: IMessageProvider
   private roomProvider: IRoomProvider
@@ -50,6 +52,7 @@ export class MessageService {
 
   async create(p: { message: Message }): Promise<Message> {
     const message = await this.messageProvider.create(p.message)
+    this.logger.info(`create > Message[${message.id}] 🎉`)
     return message
   }
 

@@ -43,6 +43,7 @@ export class RoomController {
 
   async get(req: Request, res: Response) {
     const room = await this.roomService.findOneById(req.params.id)
+    if (!room) return res.status(constants.HTTP_STATUS_NOT_FOUND)
     const profiles: ProfileVM[] = []
     for (const id of room.profileIds) {
       profiles.push(await this.getAllProfileInfo(id))

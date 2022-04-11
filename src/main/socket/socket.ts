@@ -6,7 +6,7 @@ import { v4 as randomUuid } from 'uuid'
 const rooms: Record<string, { name: string }> = {}
 
 function socket({ io }: { io: Server }) {
-  log.info(`>>> socket connected`)
+  log.info(`>>> socket connected 🚀`)
 
   io.on(ServerConnection, (socket: Socket) => {
     log.info(`user ${socket.id} connected `)
@@ -14,7 +14,7 @@ function socket({ io }: { io: Server }) {
     socket.emit(ServerEvent.ROOMS, rooms)
 
     socket.on(ClientEvent.CREATE_ROOM, ({ roomName }) => {
-      log.info(`room ${roomName} created `)
+      log.info(`room ${roomName} created 🎉`)
 
       const roomId = randomUuid()
       rooms[roomId] = {

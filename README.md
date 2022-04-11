@@ -23,6 +23,8 @@ To go further, I could have connected the users actions with MongoDB for data pe
 - Database : MongoDB (no need to setup, it is online)
 - HTTP Server : Express
 - Websocket: socket.io
+- Docker to deploy the app :
+**https://chatroom-api-backend.onrender.com**
 
 ## table of content
 
@@ -30,7 +32,7 @@ To go further, I could have connected the users actions with MongoDB for data pe
 - setup your IDE
 - start the database and external tools
 - build and run the project
-  //TODO: Test
+
 ## setup your laptop
 
 you will need to setup those tools in order to work in the project :
