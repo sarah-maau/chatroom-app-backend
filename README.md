@@ -5,12 +5,11 @@
 ## what is this project ?
 The chatroom is real-time web chat application to be realized with modern web technologies.
 - several chat rooms are available
-- users can read the last 10 messages in the room when they enter it
 - user can read new messages from other users
 - user can write and send new messages
 - user can see a list of available chat rooms
 - user can join and leave a chat room
-- user can see a list of users in a chatroom
+- user can see a list of active users 
 - user can create a chat room by giving it a name
 
 ## how the project was designed ?
@@ -23,8 +22,10 @@ To go further, I could have connected the users actions with MongoDB for data pe
 - Database : MongoDB (no need to setup, it is online)
 - HTTP Server : Express
 - Websocket: socket.io
+- Tests: Jest
 - Docker to deploy the app :
 **https://chatroom-api-backend.onrender.com**
+
 
 ## table of content
 
@@ -32,6 +33,7 @@ To go further, I could have connected the users actions with MongoDB for data pe
 - setup your IDE
 - start the database and external tools
 - build and run the project
+- test the project
 
 ## setup your laptop
 
@@ -90,4 +92,8 @@ npm run build
 npm run start:local
 ```
 
+/!\ The API is alerady online, tou can check it [here](https://chatroom-api-backend.onrender.com). To get to the collections, you need to add `/api/v1/{collecionName}`
 
+
+## test the project
+I did some tests with Jest but you can test all the enpoints in the folder [http](/http/chatroom.http), which is available from the root of the project. You can also test it with Postman (plesae, tell me, I will add you on my workspace).
