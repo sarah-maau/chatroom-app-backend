@@ -97,3 +97,5 @@ npm run start:local
 
 ## test the project
 I did some tests with Jest but you can test all the enpoints in the folder [http](/http/chatroom.http), which is available from the root of the project. You can also test it with Postman (plesae, tell me, I will add you on my workspace).
+
+Thank you 🙏
