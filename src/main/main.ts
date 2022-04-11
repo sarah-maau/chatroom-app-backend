@@ -95,6 +95,8 @@ export class BackendApplication {
   async start(): Promise<boolean> {
     await this.dependencies.databaseGateway.start()
 
+    main.get('/', (_, res) => res.send(`Server is up 🚀 `))
+
     httpServer.listen(APPLICATION_CONSTANTS.PORT, APPLICATION_CONSTANTS.HOST, () => {
       log.info(`🚀 Server is listening at port ${APPLICATION_CONSTANTS.PORT} 🚀`)
       log.info(`http://${APPLICATION_CONSTANTS.HOST}:${APPLICATION_CONSTANTS.PORT}`)
